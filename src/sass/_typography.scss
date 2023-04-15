@@ -6,13 +6,14 @@ h1 {
   line-height: 1;
   margin: 0;
   color: $color-black;
+  font-weight: 200;
 }
 
 h2 {
+  font-family: "Gotham Narrow Bold";
   font-style: normal;
-  font-weight: normal;
-  font-size: 36px;
-  line-height: 43px;
+  font-size: 16px;
+  line-height: 125%;
 }
 
 h3 {

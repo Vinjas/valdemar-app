@@ -4,6 +4,7 @@ import { getAllCollections } from '../../services/collections';
 import { RQ_DEFAULT_OPTIONS, RQ_KEY } from '../../services/constants';
 import useNotify from '../../hooks/useNotification';
 import CollectionCard from '../collection-card/collection-card';
+import './collections-list.scss';
 
 export const CollectionsList = () => {
   const { notify } = useNotify();
@@ -23,12 +24,16 @@ export const CollectionsList = () => {
     ...RQ_DEFAULT_OPTIONS
   });
 
+  console.log('collectionsData', collectionsData);
+
   return (
     <>
-      <h1>Collections</h1>
-      { collectionsData?.map((collection) =>
-        <CollectionCard key={ collection?.id } collectionName={ collection?.name } />)
-      }
+      <h1 className="collections-list-container__title">Collections</h1>
+      <div className="collections-list-container">
+        { collectionsData?.map((collection) =>
+          <CollectionCard key={ collection?.id } collectionName={ collection?.name } collectionId={ collection?.id } />)
+        }
+      </div>
     </>
   );
 };

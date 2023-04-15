@@ -1,4 +1,4 @@
-export const HOST = 'localhost:8080';
+export const HOST = 'http://localhost:8080/api';
 
 export const RQ_KEY = {
   ALL_COLLECTIONS: 'ALL_COLLECTIONS',

@@ -1,4 +1,4 @@
-import { CollectionsList } from '../collections-list/collecitons-list';
+import { CollectionsList } from '../collections-list/collections-list';
 import Footer from '../footer/footer';
 import Header from '../header/header';
 

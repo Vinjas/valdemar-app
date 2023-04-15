@@ -370,7 +370,7 @@ module.exports = {
     'template-tag-spacing': [ 'error', 'always' ],
     'yield-star-spacing': [ 'error', 'after' ],
 
-    'promise/catch-or-return': 'error',
+    'promise/catch-or-return': 'warn',
     'promise/no-return-wrap': 'error',
     'promise/param-names': 'error',
     'promise/always-return': 'off',

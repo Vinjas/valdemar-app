@@ -1,0 +1,12 @@
+.collections-list-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2px;
+  padding: 0 2.5rem 2.5rem;
+
+  &__title {
+    text-align: center;
+    padding: 4rem 0;
+  }
+}
