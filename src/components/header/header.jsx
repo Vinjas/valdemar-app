@@ -19,7 +19,7 @@ const Header = () => (
               </InputAdornment>
             )
           }} />
-      <Link className="header__link" to="/">Colecciones</Link>
+      <Link className="header__link" to="/collections">Colecciones</Link>
       <Button className="header__list" variant="contained">
         <Favorite fontSize="small" />
         <p>Tu lista</p>
