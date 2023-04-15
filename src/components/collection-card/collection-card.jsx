@@ -6,7 +6,7 @@ const CollectionCard = ({ collectionName, collectionId }) => (
   <Link className="collection-container" to={ normalizeString(collectionName) }>
     <h2 className="collection-container__title">{ collectionName }</h2>
     <div className="collection-container__element" />
-    <p className="collection-container__subtitle">Ver todos los libros</p>
+    <p className="collection-container__subtitle">Ver libros</p>
   </Link>
 );
 

@@ -24,8 +24,6 @@ export const CollectionsList = () => {
     ...RQ_DEFAULT_OPTIONS
   });
 
-  console.log('collectionsData', collectionsData);
-
   return (
     <>
       <h1 className="collections-list-container__title">Collections</h1>

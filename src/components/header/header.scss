@@ -1,11 +1,85 @@
+@import '../../sass/variables';
+@import '../../sass/fonts';
+@import '../../sass/mixims';
+
 .header {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
-  padding: 32px 24px;
+  padding: 0 16px;
+  align-items: center;
+
+  @include mdMinBreakPoint {
+    padding: 32px 24px;
+  }
+
+  @include lgMinBreakPoint {
+    flex-direction: row;
+    padding: 8px 24px;
+  }
 
   &__right {
     display: flex;
     gap: 1rem;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    flex-direction: column;
+
+
+    @include lgMinBreakPoint {
+      width: auto;
+    }
+
+    @include mdMinBreakPoint {
+      flex-direction: row;
+      width: auto;
+    }
+  }
+
+  &__list {
+    height: 2.5rem;
+    background-color: $color-black !important;
+    font-family: 'Mercury-text-g1' !important;
+    width: 100%;
+
+    @include mdMinBreakPoint {
+      width: auto;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $color-black;
+    width: 100%;
+    text-align: center;
+
+    @include mdMinBreakPoint {
+      width: auto;
+    }
+  }
+
+  &__login {
+    height: 2.5rem;
+    border-color: $color-black !important;
+    color: $color-black !important;
+    font-family: 'Mercury-text-g1' !important;
+    width: 100%;
+
+    @include mdMinBreakPoint {
+      width: auto;
+    }
+  }
+
+  &__search {
+    width: 100%;
+
+    @include mdMinBreakPoint {
+      width: auto;
+    }
+    
+    & > .MuiInputBase-root {
+      height: 2.5rem;
+    }
   }
 }
