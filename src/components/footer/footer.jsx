@@ -10,7 +10,7 @@ const Footer = () => (
       <p className="footer__name">Daniel Vinyas</p>
     </div>
 
-    <Logo isWhite={ true } />
+    <Logo isWhite={ true } isSmall={ true } />
   </div>
 );
 

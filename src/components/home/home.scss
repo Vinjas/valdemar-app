@@ -1,0 +1,44 @@
+@import '../../sass/variables';
+
+.home {
+  position: relative;
+  height: 100vh;
+
+  &__parallax-banner {
+    height: 100vh;
+    filter: brightness(50%)
+    }
+
+  &__parallax-title {
+    color: $color-white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+
+    &:hover {
+      color: $color-dark-grey;
+      cursor: pointer;
+    }
+  }
+
+  &__parallax-button {
+    color: $color-white;
+    background: none;
+    padding: 8px 16px;
+    border: 1px solid $color-white;
+    border-radius: 5px;
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+
+    &:hover {
+      color: $color-dark-grey;
+      border: 1px solid $color-dark-grey;
+      cursor: pointer;
+    }
+  }
+}

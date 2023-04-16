@@ -6,6 +6,12 @@
   justify-content: center;
   align-items: center;
   padding-bottom: 2rem;
+  color: $color-black;
+  text-decoration: none;
+
+  &--white {
+    color: $color-white;
+  }
 
   @include lgMinBreakPoint {
     padding-bottom: 0;
@@ -24,9 +30,8 @@
     font-size: 40px;
     font-style: italic;
 
-    &--white {
+    &--small {
       font-size: 32px;
-      color: $color-white;
     }
   }
 }

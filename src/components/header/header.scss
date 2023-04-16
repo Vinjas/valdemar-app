@@ -9,6 +9,16 @@
   padding: 0 16px;
   align-items: center;
 
+  &--home {
+    position: absolute;
+    width: 100%;
+    z-index: 2;
+
+    @include mdMinBreakPoint {
+      position: fixed;
+    }
+  }
+
   @include mdMinBreakPoint {
     padding: 32px 24px;
   }
@@ -29,11 +39,12 @@
 
     @include lgMinBreakPoint {
       width: auto;
+      justify-content: end;
     }
 
     @include mdMinBreakPoint {
       flex-direction: row;
-      width: auto;
+      width: 100%;
     }
   }
 
@@ -42,6 +53,11 @@
     background-color: $color-black !important;
     font-family: 'Mercury-text-g1' !important;
     width: 100%;
+
+    &--white {
+      background-color: $color-white !important;
+      color: $color-black !important;
+    }
 
     @include mdMinBreakPoint {
       width: auto;
@@ -53,6 +69,10 @@
     color: $color-black;
     width: 100%;
     text-align: center;
+
+    &--white {
+      color: $color-white !important;
+    }
 
     @include mdMinBreakPoint {
       width: auto;
@@ -66,6 +86,11 @@
     font-family: 'Mercury-text-g1' !important;
     width: 100%;
 
+    &--white {
+      border-color: $color-white !important;
+      color: $color-white !important;
+    }
+
     @include mdMinBreakPoint {
       width: auto;
     }
@@ -74,11 +99,20 @@
   &__search {
     width: 100%;
 
+    &--white {
+      & > .MuiInputBase-root {
+        border-color: $color-white !important;
+        color: $color-black !important;
+        background-color: $color-white !important;
+      }
+    }
+
     @include mdMinBreakPoint {
       width: auto;
     }
     
     & > .MuiInputBase-root {
+      font-family: 'Mercury-text-g1' !important;
       height: 2.5rem;
     }
   }
