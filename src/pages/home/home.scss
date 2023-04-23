@@ -6,29 +6,29 @@
 
   &__parallax-banner {
     height: 100vh;
-    filter: brightness(50%)
+
+    & > div {
+      filter: brightness(50%)
     }
+  }
 
   &__parallax-title {
-    color: $color-white;
+    color: $color-dark-grey-1;
+    text-shadow: 5px 5px 10px $color-black;
     position: absolute;
+    font-size: 48px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 1;
-
-    &:hover {
-      color: $color-dark-grey;
-      cursor: pointer;
-    }
   }
 
   &__parallax-button {
-    color: $color-white;
-    background: none;
-    padding: 8px 16px;
-    border: 1px solid $color-white;
-    border-radius: 5px;
+    background: $color-white;
+    box-shadow: 5px 5px 10px $color-black;
+    padding: 1.5rem 8rem;
+    border: none;
+    border-radius: none;
     position: absolute;
     top: 65%;
     left: 50%;
@@ -36,8 +36,10 @@
     z-index: 1;
 
     &:hover {
-      color: $color-dark-grey;
-      border: 1px solid $color-dark-grey;
+      color: $color-white;
+      border: none;
+      background: $color-dark-grey-1;
+      box-shadow: none;
       cursor: pointer;
     }
   }

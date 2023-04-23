@@ -11,7 +11,7 @@ const Home = () => {
 
   return (
     <ParallaxProvider>
-      { images.map((image, index) => (
+      { images.map((image) => (
         <ParallaxBanner className="home__parallax-banner"
             key={ image }
             layers={ [

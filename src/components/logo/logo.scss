@@ -3,7 +3,7 @@
 
 .logo {
   display: flex;
-  justify-content: center;
+  //justify-content: center;
   align-items: center;
   padding-bottom: 2rem;
   color: $color-black;
@@ -13,7 +13,7 @@
     color: $color-white;
   }
 
-  @include lgMinBreakPoint {
+  @include mdMinBreakPoint {
     padding-bottom: 0;
   }
 

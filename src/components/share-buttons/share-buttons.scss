@@ -1,0 +1,16 @@
+@import '../../sass/variables';
+
+.share-buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  color: $color-gold;
+
+  &__icon {
+    cursor: pointer;
+
+    &:hover {
+      color: $color-dark-grey-1;
+    }
+  }
+}

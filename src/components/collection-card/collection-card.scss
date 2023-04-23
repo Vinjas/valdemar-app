@@ -9,6 +9,15 @@
   flex-direction: column;
   align-items: center;
   min-width: 310px;
+  transition: 0.3s;
+
+  &:hover {
+    background-color: $color-hightlight-1
+  }
+
+  &:hover > .collection-container__element {
+    background-color: $color-black;
+  }
 
   @include mdMinBreakPoint {
     min-width: 210px;
@@ -20,12 +29,14 @@
   }
 
   &__element {
-    background-color: $color-dark-grey;
+    background-color: $color-dark-grey-1;
     width: 100px;
     height: 100px;
+    transition: 0.3s;
+
   }
 
   &__subtitle {
-    color: $color-dark-grey;
+    color: $color-grey;
   }
 }

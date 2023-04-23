@@ -1,0 +1,54 @@
+@import '../../sass/variables';
+
+html,
+body {
+  //background-color: $color-white !important;
+}
+
+.book-page {
+  display: flex;
+
+  &__left{
+    width: 65%;
+    background-color: $color-white;
+
+    &__author {
+      color: $color-gold;
+      font-family: "Gotham Narrow Bold", sans-serif;
+    }
+
+    &__title {
+      color: $color-black;
+      font-family: "Mercury-text-g1", sans-serif;
+      font-size: 40px;
+    }
+
+    &__description {
+      color: $color-grey;
+      font-family: "Mercury-display";
+    }
+  }
+
+  &__right {
+    width: 35%;
+    background-color: $color-light-grey;
+    z-index: 10;
+    
+    &__img {
+      max-width: 100%;
+      width: 200px;
+      margin-top: 48px;
+      margin-bottom: 48px;
+
+      &--container {
+        background-color: $color-pure-black;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 32px;
+        margin-bottom: 24px;
+      }
+    }
+  }
+}

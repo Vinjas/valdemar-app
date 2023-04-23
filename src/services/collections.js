@@ -14,7 +14,7 @@ export async function getAllCollections() {
   const mocked = require('../mocks/collections.json');
 
   try {
-    const { data } = await axios.get(url, { headers, withCredentials: true });
+    const { data } = await axios.get(url, { headers });
 
     return data;
   } catch (error) {
