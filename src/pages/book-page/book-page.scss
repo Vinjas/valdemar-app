@@ -1,16 +1,30 @@
 @import '../../sass/variables';
-
-html,
-body {
-  //background-color: $color-white !important;
-}
+@import '../../sass/mixims';
 
 .book-page {
   display: flex;
+  flex-direction: column-reverse;
+
+  @include smMinBreakPoint {
+    flex-direction: row;
+  }
 
   &__left{
-    width: 65%;
+    width: 100%;
     background-color: $color-white;
+    padding: 32px 16px;
+
+    @include smMinBreakPoint {
+      width: 65%;
+    }
+
+    @include mdMinBreakPoint {
+      padding: 48px 48px;
+    }
+
+    @include xlMinBreakPoint {
+      padding: 48px 250px;
+    }
 
     &__author {
       color: $color-gold;
@@ -30,9 +44,17 @@ body {
   }
 
   &__right {
-    width: 35%;
+    width: 100%;
     background-color: $color-light-grey;
     z-index: 10;
+
+    @include smMinBreakPoint {
+      width: 35%;
+    }
+
+    @include xlMinBreakPoint {
+      padding-right: 250px;
+    }
     
     &__img {
       max-width: 100%;
@@ -41,7 +63,7 @@ body {
       margin-bottom: 48px;
 
       &--container {
-        background-color: $color-pure-black;
+        background-color: $color-black;
         width: 100%;
         display: flex;
         justify-content: center;

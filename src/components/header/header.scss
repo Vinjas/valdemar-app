@@ -6,7 +6,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 0 16px;
+  padding: 16px;
   align-items: center;
 
   &--home {
@@ -35,7 +35,7 @@
     align-items: center;
     justify-content: space-evenly;
     width: 100%;
-    flex-direction: column;
+    flex-direction: column-reverse;
 
 
     @include lgMinBreakPoint {
@@ -49,11 +49,24 @@
     }
   }
 
+  &__buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    width: 100%;
+    align-items: center;
+
+    @include mdMinBreakPoint {
+      width: auto;
+    }
+  }
+
   &__list {
     height: 2.5rem;
     background-color: $color-black !important;
     font-family: 'Mercury-text-g1' !important;
     width: 100%;
+    height: 2rem;
 
     & > p {
       display: none;
@@ -94,6 +107,7 @@
     color: $color-black !important;
     font-family: 'Mercury-text-g1' !important;
     width: 100%;
+    height: 2rem;
 
     & > p {
       display: none;
@@ -130,7 +144,11 @@
     
     & > .MuiInputBase-root {
       font-family: 'Mercury-text-g1' !important;
-      height: 2.5rem;
+      height: 2rem;
+
+      @include mdMinBreakPoint {
+        height: 2.5rem;
+      }
     }
   }
 }

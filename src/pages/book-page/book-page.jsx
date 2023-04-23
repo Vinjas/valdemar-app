@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useQuery } from 'react-query';
 import { useParams } from 'react-router-dom';
 import ShareButtons from '../../components/share-buttons/share-buttons';
@@ -23,6 +23,11 @@ const BookPage = () => {
     onSuccess,
     ...RQ_DEFAULT_OPTIONS
   });
+
+  useEffect(() => {
+    document.body.style.backgroundColor = '#fff';
+    document.documentElement.style.backgroundColor = '#fff';
+  }, []);
 
   const {
     isbn,
