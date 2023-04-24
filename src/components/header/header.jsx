@@ -29,13 +29,14 @@ const Header = () => {
             <Favorite fontSize="small" />
             <p>Tu lista</p>
           </Button>
-          <Button className={ `header__login ${ isHomePage && 'header__login--white' }` } variant="outlined">
-            <Person fontSize="small" />
-            <p>Perfil</p>
-          </Button>
+          <Link to="/login">
+            <Button className={ `header__login ${ isHomePage && 'header__login--white' }` } variant="outlined">
+              <Person fontSize="small" />
+              <p>Perfil</p>
+            </Button>
+          </Link>
         </div>
       </div>
-
     </div>
   );
 };

@@ -27,6 +27,11 @@ const BookPage = () => {
   useEffect(() => {
     document.body.style.backgroundColor = '#fff';
     document.documentElement.style.backgroundColor = '#fff';
+
+    return () => {
+      document.body.style.backgroundColor = '#f6f6f6';
+      document.documentElement.style.backgroundColor = '#f6f6f6';
+    };
   }, []);
 
   const {

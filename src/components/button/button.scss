@@ -1,0 +1,30 @@
+@import '../../sass/variables';
+
+.button {
+  font-family: 'Gotham Narrow Bold';
+  text-transform: uppercase;
+  border: none;
+  border-radius: none;
+  padding: 20px;
+  margin-bottom: 1rem;
+  transition: 0.5s;
+  cursor: pointer;
+
+  &__primary {
+    background-color: $color-gold;
+    color: $color-white;
+  }
+
+  &__secondary {
+    background-color: transparent;
+    color: $color-black;
+    box-shadow: 0 0 0 2px $color-grey;  
+  }
+
+  &:hover {
+    background-color: $color-black;
+    color: $color-white;
+    border: none;
+    box-shadow: none;
+  }
+}

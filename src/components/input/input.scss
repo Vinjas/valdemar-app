@@ -1,0 +1,41 @@
+@import '../../sass/variables';
+
+.input {
+  font-family: 'Gotham Narrow Bold';
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 44px;
+
+  & label {
+    font-size: 13px;
+    color: $color-gold-light;
+    font-family: 'Gotham Narrow Bold';
+
+  }
+
+  & label.Mui-focused {
+    color: $color-gold-light;
+    border-bottom-color: $color-gold-light;
+  }
+
+  & .MuiInputBase-input {
+    font-family: 'Gotham Narrow Bold';
+  }
+
+  & .MuiInput-underline:hover {
+    border-bottom-color: $color-gold-light;
+  }
+
+  & .MuiInput-underline:after {
+    border-bottom-color: $color-gold-light;
+  }
+  & .MuiInput-underline:before {
+    border-bottom-color: $color-gold-light;
+  }
+
+  & .MuiOutlinedInput-root {
+    &.Mui-focused fieldset {
+      border-color: $color-grey
+    }
+  }
+}

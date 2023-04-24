@@ -1,0 +1,74 @@
+@import '../../sass/variables';
+@import '../../sass/mixims';
+
+.login-page {
+  display: flex;
+  flex-direction: column-reverse;
+
+  @include smMinBreakPoint {
+    flex-direction: row;
+  }
+
+  &__left{
+    width: 100%;
+    background-color: $color-white;
+    padding: 32px 16px;
+
+    @include smMinBreakPoint {
+      width: 65%;
+    }
+
+    @include mdMinBreakPoint {
+      padding: 48px 48px;
+    }
+
+    @include xlMinBreakPoint {
+      padding: 48px 250px;
+    }
+  }
+
+  &__right {
+    width: 100%;
+    background-color: $color-light-grey;
+    z-index: 10;
+
+    @include smMinBreakPoint {
+      width: 35%;
+    }
+
+    @include xlMinBreakPoint {
+      padding-right: 250px;
+    }
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+
+    &--input {
+      margin-bottom: 32px;
+    }
+  }
+
+  &__title {
+    color: $color-black;
+    font-family: "Mercury-text-g1", sans-serif;
+    font-size: 40px;
+
+    &--secondary {
+      font-family: 'Gotham Narrow Bold';
+      text-transform: uppercase;
+      margin: 1rem 0;
+      font-size: 13px;
+    }
+  }
+
+  &__description {
+    color: $color-grey;
+    font-family: "Mercury-display";
+
+    &--secondary {
+      margin-bottom: 2rem;
+    }
+  }
+}
