@@ -25,10 +25,12 @@ const Header = () => {
             }} />
         <div className="header__buttons">
           <Link className={ `header__link ${ isHomePage && 'header__link--white' }` } to="/collections">Colecciones</Link>
-          <Button className={ `header__list ${ isHomePage && 'header__list--white' }` } variant="contained">
-            <Favorite fontSize="small" />
-            <p>Tu lista</p>
-          </Button>
+          <Link to="/whislist">
+            <Button className={ `header__list ${ isHomePage && 'header__list--white' }` } variant="contained">
+              <Favorite fontSize="small" />
+              <p>Tu lista</p>
+            </Button>
+          </Link>
           <Link to="/login">
             <Button className={ `header__login ${ isHomePage && 'header__login--white' }` } variant="outlined">
               <Person fontSize="small" />

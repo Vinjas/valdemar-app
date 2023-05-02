@@ -70,6 +70,9 @@
 
     & > p {
       display: none;
+      font-size: 13px;
+      font-family: 'Gotham Narrow Bold';
+      margin-left: 4px;
       
       @include lgMinBreakPoint {
         display: block;
@@ -91,9 +94,14 @@
     color: $color-black;
     width: 100%;
     text-align: center;
+    transition: 0.3s;
 
     &--white {
       color: $color-white !important;
+    }
+
+    &:hover {
+      color: $color-gold;
     }
 
     @include mdMinBreakPoint {
@@ -111,6 +119,9 @@
 
     & > p {
       display: none;
+      font-size: 13px;
+      font-family: 'Gotham Narrow Bold';
+      margin-left: 4px;
       
       @include lgMinBreakPoint {
         display: block;

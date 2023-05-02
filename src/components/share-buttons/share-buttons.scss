@@ -2,9 +2,21 @@
 
 .share-buttons {
   display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  &__label {
+    color: $color-grey;
+    font-family: "Gotham Narrow Bold", sans-serif;
+    text-transform: uppercase;
+  }
+
+  &__list {
+      display: flex;
   flex-direction: row;
   gap: 2rem;
   color: $color-gold;
+  }
 
   &__icon {
     cursor: pointer;
@@ -13,4 +25,6 @@
       color: $color-dark-grey-1;
     }
   }
+
+  
 }

@@ -1,0 +1,94 @@
+@import '../../sass/variables';
+@import '../../sass/mixims';
+
+.carousel-container {
+  margin-bottom: 2rem;
+  background-color: $color-black;
+}
+
+.carousel-books {
+  color: $color-white;
+  font-family: "Mercury-text-g1", sans-serif;
+  font-size: 16px;
+  line-height: 30px;
+  background-color: transparent;
+
+  @include mdMinBreakPoint {
+    min-height: 30px;
+  }
+
+  &__content {
+    padding: 20px 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    @include mdMinBreakPoint {
+      padding: 40px 180px;
+      align-items: flex-start;
+      text-align: left;  
+    }
+
+    @include xlMinBreakPoint {
+      padding: 60px 300px;
+    }
+  }
+
+  &__img {
+    pointer-events: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    object-fit: cover;
+    filter:  opacity(40%) blur(2px);
+  }
+
+  &__title {
+    font-family: "Mercury-display";
+    font-size: 24px;
+
+    @include mdMinBreakPoint {
+      font-size: 32px;
+    }
+  }
+
+  &__description {
+    display: none;    
+
+    &::before {
+      content: "";
+      display: inline-block;
+      width: 40px;
+      height: 2px;
+      background: $color-grey;
+      position: relative;
+      top: -4px;
+      padding: 0;
+      margin: 0 10px 0 0;
+    }
+
+    @include mdMinBreakPoint {
+      display: block;    
+    }
+  }
+
+  &__button {
+    color: $color-black;
+    border: none;
+    text-decoration: none;
+    padding: 4px 24px;
+    background-color: $color-white;
+    transition: 0.3s;
+
+    &:hover {
+      background-color: $color-gold;
+      cursor: pointer;
+    }
+
+    @include mdMinBreakPoint {
+      padding: 8px 24px;
+    }
+  }
+}

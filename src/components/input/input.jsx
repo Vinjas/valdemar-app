@@ -1,5 +1,4 @@
 import { TextField } from '@mui/material';
-import { alpha, styled } from '@mui/material/styles';
 import PropTypes from 'prop-types';
 import './input.scss';
 
@@ -14,3 +13,10 @@ const Input = ({ id, label, required, type }) => (
 );
 
 export default Input;
+
+Input.propTypes = {
+  id: PropTypes.string,
+  label: PropTypes.string,
+  required: PropTypes.bool,
+  type: PropTypes.string
+};

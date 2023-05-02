@@ -1,10 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import Button from '../../components/button/button';
 import Input from '../../components/input/input';
 import './login-page.scss';
 
 const LoginPage = () => {
-  const isAuth = false;
+  // const isAuth = false;
 
   useEffect(() => {
     document.body.style.backgroundColor = '#fff';
@@ -24,14 +24,14 @@ const LoginPage = () => {
 
         <form className="login-page__form">
           <Input id="login-username"
-              className="login-page__form--input"
               label="Usuario"
               required />
+          <div className="login-page__form--separator" />
           <Input id="login-password"
-              className="login-page__form--input"
               label="Password"
               type="password"
               required />
+          <div className="login-page__form--separator" />
           <Button label="Date de Alta" disabled={ false } type="primary" />
           <span className="login-page__title--secondary">¿Todavía no tienes cuenta?</span>
           <span className="login-page__description login-page__description--secondary">Regístrate para disfrutar de todas las ventajas de Valdemar y enterarte de todas las novedades.</span>

@@ -31,6 +31,10 @@
       font-family: "Gotham Narrow Bold", sans-serif;
     }
 
+    &__button {
+      width: 100%;
+    }
+
     &__title {
       color: $color-black;
       font-family: "Mercury-text-g1", sans-serif;
@@ -40,6 +44,20 @@
     &__description {
       color: $color-grey;
       font-family: "Mercury-display";
+      font-size: 16px;
+      line-height: 30px;
+
+      &::before {
+        content: "";
+        display: inline-block;
+        width: 40px;
+        height: 2px;
+        background: $color-grey;
+        position: relative;
+        top: -4px;
+        padding: 0;
+        margin: 0 10px 0 0;
+      }
     }
   }
 
@@ -54,6 +72,56 @@
 
     @include xlMinBreakPoint {
       padding-right: 250px;
+    }
+
+    &__content {
+      padding: 8px 80px;
+      font-family: "Gotham Narrow Bold", sans-serif;
+      color: $color-black;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+
+      &--collection {
+        color: $color-black;
+        text-decoration: none;
+        padding: 8px 24px;
+        border: 1px solid $color-gold;
+        display: flex;
+        justify-content: center;
+        background-color: $color-white;
+        width: 100%;
+        transition: 0.3s;
+
+        &:hover {
+          cursor: pointer;
+          background-color: $color-grey;
+          border-color: $color-grey;
+          color: $color-white;
+        }
+      }
+
+      &--genre {
+        padding: 8px 24px;
+        border: none;
+        color: $color-white;
+        display: flex;
+        justify-content: center;
+        background-color: $color-black;
+        width: 100%;
+      }
+
+      &--title {
+        color: $color-grey;
+        font-family: "Mercury-text-g1", sans-serif;
+        margin-bottom: .5rem;
+      }
+
+      &--value {
+        margin-bottom: 1rem;
+      }
     }
     
     &__img {

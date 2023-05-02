@@ -1,4 +1,5 @@
 @import '../../sass/variables';
+@import '../../sass/mixims';
 
 .collection {
 
@@ -15,5 +16,9 @@
     gap: 2px;
     padding: 0 2.5rem 2.5rem;
     background-color: $color-white;
+
+    @include mdMinBreakPoint {
+      padding: 8rem 0;
+    }
   }
 }

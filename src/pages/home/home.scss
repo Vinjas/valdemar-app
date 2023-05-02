@@ -13,8 +13,8 @@
   }
 
   &__parallax-title {
-    color: $color-dark-grey-1;
-    text-shadow: 5px 5px 10px $color-black;
+    color: $color-white;
+    text-shadow: 0 0 10px $color-black;
     position: absolute;
     font-size: 48px;
     top: 50%;
@@ -34,6 +34,9 @@
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 1;
+    transition: 0.3s;
+    color: $color-black;
+    text-decoration: none;
 
     &:hover {
       color: $color-white;

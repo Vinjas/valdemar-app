@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
 import { useQuery } from 'react-query';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import ShareButtons from '../../components/share-buttons/share-buttons';
+import Button from '../../components/button/button';
 import { getBook } from '../../services/books';
 import { RQ_DEFAULT_OPTIONS, RQ_KEY } from '../../services/constants';
 import './book-page.scss';
+import Spinner from '../../components/spinner/spinner';
 
 const BookPage = () => {
   const { bookId } = useParams();
@@ -21,6 +23,7 @@ const BookPage = () => {
     queryKey: RQ_KEY.BOOKS_LIST_BY_COLLECTION,
     queryFn: () => getBook(bookId),
     onSuccess,
+    enabled: true,
     ...RQ_DEFAULT_OPTIONS
   });
 
@@ -47,26 +50,48 @@ const BookPage = () => {
   } = bookDetails;
 
   return (
-    <div className="book-page">
-      <div className="book-page__left">
-        <h2 className="book-page__left__author">{ author?.name }</h2>
-        <h3 className="book-page__left__title">{ title }</h3>
-        <p className="book-page__left__description">{ description }</p>
-        <ShareButtons />
-      </div>
-      <div className="book-page__right">
-        <div className="book-page__right__img--container">
-          <img className="book-page__right__img" alt={ title } src={ image } />
+    <>
+      { bookDetails && !isLoading && (
+      <div className="book-page">
+        <div className="book-page__left">
+          <h2 className="book-page__left__author">{ author?.name }</h2>
+          <h3 className="book-page__left__title">{ title }</h3>
+          <p className="book-page__left__description">{ description }</p>
+          <Button className="book-page__left__button" label="Añadir a tu lista" type="primary" />
+          <ShareButtons />
         </div>
-        <div>{ date }</div>
-        <div>{ collection?.name }</div>
+        <div className="book-page__right">
+          <div className="book-page__right__img--container">
+            <img className="book-page__right__img" alt={ title } src={ image } />
+          </div>
+          <div className="book-page__right__content">
+            <Link className="book-page__right__content--collection"
+                to={ `/collections/${ collection?.id }` }>
+              { collection?.name }
+            </Link>
+            {
+          genres?.map((genre) => (
+            <p key={ genre?.name }
+                className="book-page__right__content--genre">
+              { genre?.name }
+            </p>
+          ))
+          }
+            <div className="book-page__right__content--title">Año:</div>
+            <span className="book-page__right__content--value">{ date }</span>
 
-        {
-          genres?.map((genre) =>
-            <div key={ genre?.name }>{ genre?.name }</div>)
-        }
+            <div className="book-page__right__content--title">ISBN:</div>
+            <span className="book-page__right__content--value">{ isbn }</span>
+
+            <div className="book-page__right__content--title">Precio:</div>
+            <span className="book-page__right__content--value">{ `${ price } €` }</span>
+          </div>
+        </div>
       </div>
-    </div>
+      ) };
+      { isLoading && <Spinner /> }
+      { isError && <p>Ha habido un error</p> }
+    </>
   );
 };
 

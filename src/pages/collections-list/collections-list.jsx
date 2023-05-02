@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useQuery } from 'react-query';
-import { useMatch } from 'react-router-dom';
 import { getAllCollections } from '../../services/collections';
 import { RQ_DEFAULT_OPTIONS, RQ_KEY } from '../../services/constants';
 import useNotify from '../../hooks/useNotification';
+import CarouselBooks from '../../components/carousel-books/carousel-books';
+import Spinner from '../../components/spinner/spinner';
 import CollectionCard from '../../components/collection-card/collection-card';
 import './collections-list.scss';
 
@@ -34,17 +35,27 @@ export const CollectionsList = () => {
   return (
     <>
       <h1 className="collections-list-container__title">Collections</h1>
-      <div className="collections-list-container">
-        { collectionsList && collectionsList?.map((collection) =>
-          <CollectionCard key={ collection?.id } collectionName={ collection?.name } collectionId={ collection?.id } />)
-        }
-        { isLoading &&
-          <p>Cargando...</p>
-         }
-        { isError &&
-          <p>Ha habido un error al cargar las colecciones</p>
-        }
-      </div>
+
+      <CarouselBooks maxItems={ 4 } />
+
+      { collectionsList && !isLoading && (
+        <>
+          <div className="collections-list-container">
+            { collectionsList?.map((collection) => (
+              <CollectionCard key={ collection?.id }
+                  collectionName={ collection?.name }
+                  collectionId={ collection?.id } />
+            ))
+          }
+          </div>
+        </>
+      ) }
+      { isLoading &&
+        <Spinner />
+      }
+      { isError &&
+        <p>Ha habido un error al cargar las colecciones</p>
+      }
     </>
   );
 };

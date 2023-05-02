@@ -1,12 +1,17 @@
 @import "./fonts";
 @import "./variables";
+@import "./mixims";
 
 h1 {
-  font-size: 80px;
+  font-size: 40px;
   line-height: 1;
   margin: 0;
   color: $color-black;
   font-weight: 200;
+
+  @include mdMinBreakPoint {
+    font-size: 80px;
+  }
 }
 
 h2 {

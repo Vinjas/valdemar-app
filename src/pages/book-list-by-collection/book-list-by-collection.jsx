@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useQuery } from 'react-query';
 import { useParams } from 'react-router-dom';
 import BookCard from '../../components/book-card/book-card';
+import Spinner from '../../components/spinner/spinner';
 import { getBooksByCollection } from '../../services/books';
 import { RQ_DEFAULT_OPTIONS, RQ_KEY } from '../../services/constants';
 import './book-list-by-collection.scss';
@@ -24,25 +25,35 @@ const BookListByCollection = () => {
     ...RQ_DEFAULT_OPTIONS
   });
 
-  return (
-    <>
-      <h1 className="collection__title">
-        { bookList[0]?.collection?.name }
-      </h1>
-      <div className="collection__book-list">
-        { bookList && bookList?.map(({ title, author, date, image, price, isbn }) => (
-          <BookCard key={ title }
-              title={ title }
-              author={ author?.name }
-              date={ date }
-              image={ image }
-              price={ price }
-              isbn={ isbn } />
-        )) }
-      </div>
+  if (isError) {
+    return (
+      <>
+        Error
+      </>
+    );
+  }
 
-    </>
-  );
+  return bookList?.length > 0 && !isLoading
+    ? (
+      <>
+        <h1 className="collection__title">
+          { bookList[0]?.collection?.name }
+        </h1>
+        <div className="collection__book-list">
+          { bookList?.map(({ title, author, date, image, price, isbn }) => (
+            <BookCard key={ title }
+                title={ title }
+                author={ author?.name }
+                date={ date }
+                image={ image }
+                price={ price }
+                isbn={ isbn } />
+          )) }
+        </div>
+
+      </>
+    ) :
+      <Spinner />;
 };
 
 export default BookListByCollection;

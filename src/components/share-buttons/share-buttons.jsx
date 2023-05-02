@@ -25,10 +25,13 @@ const ShareButtons = () => {
 
   return (
     <div className="share-buttons">
-      <TwitterIcon className="share-buttons__icon" onClick={ handleTwitter } />
-      <FacebookIcon className="share-buttons__icon" onClick={ handleFacebook } />
-      <EmailIcon className="share-buttons__icon" onClick={ handleEmail } />
-      <LinkIcon className="share-buttons__icon" onClick={ handleCopy } />
+      <p className="share-buttons__label">Share</p>
+      <div className="share-buttons__list">
+        <TwitterIcon className="share-buttons__icon" onClick={ handleTwitter } />
+        <FacebookIcon className="share-buttons__icon" onClick={ handleFacebook } />
+        <EmailIcon className="share-buttons__icon" onClick={ handleEmail } />
+        <LinkIcon className="share-buttons__icon" onClick={ handleCopy } />
+      </div>
     </div>
 
   );
