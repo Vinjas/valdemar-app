@@ -37,12 +37,11 @@
     width: 100%;
     flex-direction: column-reverse;
 
-
     @include lgMinBreakPoint {
       width: auto;
     }
 
-    @include mdMinBreakPoint {
+    @include smMinBreakPoint {
       justify-content: end;
       flex-direction: row;
       width: 100%;
@@ -133,7 +132,7 @@
       color: $color-white !important;
     }
 
-    @include mdMinBreakPoint {
+    @include smMinBreakPoint {
       width: auto;
     }
   }

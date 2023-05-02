@@ -88,7 +88,7 @@ const BookPage = () => {
           </div>
         </div>
       </div>
-      ) };
+      ) }
       { isLoading && <Spinner /> }
       { isError && <p>Ha habido un error</p> }
     </>

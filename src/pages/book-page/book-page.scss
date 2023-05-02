@@ -13,6 +13,9 @@
     width: 100%;
     background-color: $color-white;
     padding: 32px 16px;
+    -webkit-animation: slide-in-left 800ms cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: slide-in-left 800ms cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    
 
     @include smMinBreakPoint {
       width: 65%;
@@ -65,6 +68,9 @@
     width: 100%;
     background-color: $color-light-grey;
     z-index: 10;
+	  -webkit-animation: slide-in-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	  animation: slide-in-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+
 
     @include smMinBreakPoint {
       width: 35%;
@@ -75,7 +81,7 @@
     }
 
     &__content {
-      padding: 8px 80px;
+      padding: 8px 40px;
       font-family: "Gotham Narrow Bold", sans-serif;
       color: $color-black;
       display: flex;
@@ -83,6 +89,9 @@
       justify-content: center;
       align-items: center;
 
+      @include mdMinBreakPoint {
+        padding: 8px 80px;
+      }
 
       &--collection {
         color: $color-black;
@@ -94,11 +103,11 @@
         background-color: $color-white;
         width: 100%;
         transition: 0.3s;
+        margin: 0 0 1rem;
 
         &:hover {
           cursor: pointer;
-          background-color: $color-grey;
-          border-color: $color-grey;
+          background-color: $color-gold;
           color: $color-white;
         }
       }
@@ -109,8 +118,10 @@
         color: $color-white;
         display: flex;
         justify-content: center;
-        background-color: $color-black;
+        background-color: $color-grey;
         width: 100%;
+        text-align: center;
+        margin: 0 0 1rem;
       }
 
       &--title {

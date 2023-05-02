@@ -65,9 +65,10 @@ const CarouselBooks = ({ maxItems }) => {
 
   return (
     <Carousel className="carousel-container"
-        navButtonsAlwaysVisible={ true }
         maxItems={ maxItems }
-        indicators={ false }>
+        indicators={ false }
+        interval={ 5000 }
+        stopAutoPlayOnHover={ false }>
       { bookList.map((book) => (
         <Item key={ book?.isbn }
             name={ book?.title }

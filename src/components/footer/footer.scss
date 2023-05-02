@@ -8,6 +8,7 @@
   background-color: $color-black;
   color: $color-white;
   padding: 40px 16px;
+  box-shadow: 0 50vh 0 50vh $color-black;
 
   @include mdMinBreakPoint {
     padding: 40px 40px;
