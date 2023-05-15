@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types';
 import './button.scss';
 
-const Button = ({ label, disabled, type, className }) => (
+const Button = ({ label, disabled, type, className, onClick }) => (
   <button className={ `button button__${ type } ${ className }` }
-      disabled={ disabled }>
+      disabled={ disabled }
+      onClick={ onClick }>
     { label }
   </button>
 );

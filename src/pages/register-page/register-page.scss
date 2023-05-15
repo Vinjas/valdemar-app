@@ -1,7 +1,7 @@
 @import '../../sass/variables';
 @import '../../sass/mixims';
 
-.login-page {
+.register-page {
   display: flex;
   flex-direction: column-reverse;
 
@@ -72,12 +72,6 @@
     &--secondary {
       margin-bottom: 2rem;
     }
-  }
-
-  &__register-button {
-    width: 100%;
-    display: block;
-    margin-top: 2rem;
   }
 
   &__error  {
