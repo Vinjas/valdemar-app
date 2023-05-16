@@ -1,0 +1,87 @@
+@import '../../sass/variables';
+@import '../../sass/mixims';
+
+.profile-page {
+  display: flex;
+  flex-direction: column-reverse;
+
+  @include smMinBreakPoint {
+    flex-direction: row;
+  }
+
+  &__left{
+    width: 100%;
+    background-color: $color-white;
+    padding: 32px 16px 48px;
+    -webkit-animation: slide-in-left 800ms cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: slide-in-left 800ms cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+
+    @include smMinBreakPoint {
+      width: 65%;
+    }
+
+    @include mdMinBreakPoint {
+      padding: 48px 48px 120px;
+    }
+
+    @include xlMinBreakPoint {
+      padding: 48px 250px 120px;
+    }
+  }
+
+  &__right {
+    width: 100%;
+    background-color: $color-light-grey;
+    z-index: 10;
+
+    @include smMinBreakPoint {
+      width: 35%;
+    }
+
+    @include xlMinBreakPoint {
+      padding-right: 250px;
+    }
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+
+    &--separator {
+      margin-bottom: 32px;
+    }
+  }
+
+  &__title {
+    color: $color-black;
+    font-family: "Mercury-text-g1", sans-serif;
+    font-size: 40px;
+
+    &--secondary {
+      font-family: 'Gotham Narrow Bold';
+      text-transform: uppercase;
+      margin: 1rem 0;
+      font-size: 13px;
+    }
+  }
+
+  &__description {
+    color: $color-grey;
+    font-family: "Mercury-display";
+
+    &--secondary {
+      margin-bottom: 2rem;
+    }
+  }
+
+  &__register-button {
+    width: 100%;
+    display: block;
+    margin-top: 2rem;
+  }
+
+  &__error  {
+    color: $color-red;
+    font-weight: 800;
+  }
+}

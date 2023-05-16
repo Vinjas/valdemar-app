@@ -19,6 +19,23 @@ export async function postLogin(loginPayload) {
   }
 }
 
+export async function getLogout(token) {
+  const url = `${ HOST }/logout`;
+
+  const headers = {
+    'Authorization': `Bearer ${ token }`,
+    'X-Custom-Header': 'value'
+  };
+
+  try {
+    const { data } = await axios.get(url, { headers });
+
+    return data;
+  } catch (error) {
+    return error;
+  }
+}
+
 export async function postRegister(registerPayload) {
   const url = `${ HOST }/register`;
 

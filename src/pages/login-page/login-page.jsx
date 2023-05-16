@@ -1,15 +1,22 @@
-import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useContext, useEffect, useState } from 'react';
+import { Link, useNavigate, redirect } from 'react-router-dom';
 import Button from '../../components/button/button';
 import Input from '../../components/input/input';
 import { postLogin } from '../../services/auth';
 import { EMAIL_REGEX } from '../../services/constants';
 import './login-page.scss';
+import { LoginContext } from '../../context/loginContext';
 
 const LoginPage = () => {
-  // const isAuth = false;
+  const navigate = useNavigate();
+
+  const { isLoggedIn, setIsLoggedIn } = useContext(LoginContext);
 
   useEffect(() => {
+    if (isLoggedIn) {
+      navigate('/profile');
+    }
+
     document.body.style.backgroundColor = '#fff';
     document.documentElement.style.backgroundColor = '#fff';
 
@@ -53,9 +60,6 @@ const LoginPage = () => {
     try {
       const { data, status } = await postLogin(form);
 
-      console.log('status', status);
-      console.log('data', data);
-
       if (status !== 200) {
         setIsFormError(true);
         setErrorMessage('El usuario o password no es correcto');
@@ -63,7 +67,11 @@ const LoginPage = () => {
         return;
       }
 
+      setIsLoggedIn(true);
+
       localStorage.setItem('token', data?.token);
+
+      navigate('/profile');
     } catch (error) {
       setIsFormError(true);
       setErrorMessage('El usuario o password introducido no es correcto');
@@ -110,7 +118,6 @@ const LoginPage = () => {
         <Link to="/register" className="login-page__register-button">
           <Button label="Crea tu cuenta" disabled={ false } type="secondary" />
         </Link>
-
       </div>
       <div className="login-page__right" />
     </div>

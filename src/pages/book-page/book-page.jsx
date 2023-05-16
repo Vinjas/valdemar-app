@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { useQuery } from 'react-query';
 import { Link, useParams } from 'react-router-dom';
 import ShareButtons from '../../components/share-buttons/share-buttons';
@@ -7,9 +7,12 @@ import { getBook } from '../../services/books';
 import { RQ_DEFAULT_OPTIONS, RQ_KEY } from '../../services/constants';
 import './book-page.scss';
 import Spinner from '../../components/spinner/spinner';
+import { LoginContext } from '../../context/loginContext';
 
 const BookPage = () => {
   const { bookId } = useParams();
+
+  const { isLoggedIn } = useContext(LoginContext);
 
   const [ bookDetails, setBookDetails ] = useState({});
 
@@ -57,7 +60,11 @@ const BookPage = () => {
           <h2 className="book-page__left__author">{ author?.name }</h2>
           <h3 className="book-page__left__title">{ title }</h3>
           <p className="book-page__left__description">{ description }</p>
-          <Button className="book-page__left__button" label="Añadir a tu lista" type="primary" />
+
+          { isLoggedIn &&
+            <Button className="book-page__left__button" label="Añadir a tu lista" type="primary" />
+          }
+
           <ShareButtons />
         </div>
         <div className="book-page__right">
