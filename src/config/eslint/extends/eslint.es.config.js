@@ -94,7 +94,7 @@ module.exports = {
     'key-spacing': [ 'error', { beforeColon: false, afterColon: true, mode: 'strict' }],
     'keyword-spacing': [ 'error', { before: true, after: true }],
     'line-comment-position': 'off',
-    'linebreak-style': [ 'error', 'unix' ],
+    'linebreak-style': 'off',
     'lines-around-comment': 'off',
     'lines-around-directive': 'off',
     'max-depth': 'off',
