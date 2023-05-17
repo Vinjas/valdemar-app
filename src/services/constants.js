@@ -3,7 +3,8 @@ export const HOST = 'http://localhost:8080/api';
 export const RQ_KEY = {
   ALL_COLLECTIONS: 'ALL_COLLECTIONS',
   BOOKS_LIST_BY_COLLECTION: 'BOOKS_LIST_BY_COLLECTION',
-  ALL_BOOKS: 'ALL_BOOKS'
+  ALL_BOOKS: 'ALL_BOOKS',
+  USER_WISHLIST: 'USER_WISHLIST'
 };
 
 export const RQ_DEFAULT_OPTIONS = {
@@ -20,3 +21,7 @@ export const USERNAME_CHARACTERS = {
   max: 16,
   min: 3
 };
+
+export const HTTP_OK = 200;
+
+export const JWT_TOKEN = 'token';

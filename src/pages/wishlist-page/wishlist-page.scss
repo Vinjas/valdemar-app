@@ -1,0 +1,82 @@
+@import '../../sass/variables';
+@import '../../sass/mixims';
+
+.wishlist-page {
+  &__title {
+    text-align: center;
+    font-size: 40px;
+    padding: 1rem;
+    margin: 0;
+    -webkit-animation: slide-in-left 800ms cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: slide-in-left 800ms cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+
+    @include smMinBreakPoint {
+      padding: 1.5rem 0;
+      margin: 0 1rem;
+    }
+
+    @include mdMinBreakPoint {
+      text-align: left;
+      padding: 2.5rem 0;
+      margin: 0 4.5rem; 
+    }
+
+    @include xlMinBreakPoint {
+      margin: 0 250px; 
+    }
+  }
+
+  &__background {
+    background-color: $color-light-grey;
+    padding: 0;
+    
+    @include smMinBreakPoint {
+      padding: 40px;
+      margin: 0;
+    }
+
+    @include mdMinBreakPoint {
+      padding: 65px;
+      margin: 0 4.5rem 5rem;
+    }
+
+    @include xlMinBreakPoint {
+      padding: 90px;
+      margin: 0 250px 5rem; 
+    }
+  }
+
+  &__wrapper {
+    background-color: $color-white;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    -webkit-animation: slide-in-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: slide-in-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+
+    @include smMinBreakPoint {
+      padding: 4.5rem 3rem;
+    }
+  }
+
+  &__item-count {
+    font-family: 'Gotham Narrow Bold';
+    text-transform: uppercase;
+  }
+
+  &__separator {
+    margin: 1rem 0;
+    border: 1px solid $color-light-grey;
+  }
+
+  &__login-text {
+    font-family: 'Gotham Narrow Bold';
+
+    &--secondary {
+      font-family: "Mercury-display", sans-serif;
+      font-size: 16px;
+      margin: 1rem 0 2rem;
+      color: $color-grey;
+    }
+  }
+}

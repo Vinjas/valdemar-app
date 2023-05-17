@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { useQuery } from 'react-query';
 import { getAllCollections } from '../../services/collections';
 import { RQ_DEFAULT_OPTIONS, RQ_KEY } from '../../services/constants';
-import useNotify from '../../hooks/useNotification';
 import CarouselBooks from '../../components/carousel-books/carousel-books';
 import Spinner from '../../components/spinner/spinner';
 import CollectionCard from '../../components/collection-card/collection-card';
@@ -10,8 +9,6 @@ import './collections-list.scss';
 
 export const CollectionsList = () => {
   const [ collectionsList, setCollectionsList ] = useState([]);
-
-  const { notify } = useNotify();
 
   const handleError = (error) => {
     console.error('Error al cargar las colecciones', error);

@@ -1,20 +1,29 @@
 import { useState, useEffect, useContext } from 'react';
 import { useQuery } from 'react-query';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import ShareButtons from '../../components/share-buttons/share-buttons';
 import Button from '../../components/button/button';
 import { getBook } from '../../services/books';
-import { RQ_DEFAULT_OPTIONS, RQ_KEY } from '../../services/constants';
+import { HTTP_OK, JWT_TOKEN, RQ_DEFAULT_OPTIONS, RQ_KEY } from '../../services/constants';
 import './book-page.scss';
 import Spinner from '../../components/spinner/spinner';
 import { LoginContext } from '../../context/loginContext';
+import { getUserWishlist, postAddBookToWishlist } from '../../services/wishlist';
+import { getLogout } from '../../services/auth';
+import { checkBookInWishlist } from '../../utils/checkBookInWishlist';
 
 const BookPage = () => {
+  const token = localStorage.getItem(JWT_TOKEN);
+
+  const navigate = useNavigate();
+
   const { bookId } = useParams();
 
-  const { isLoggedIn } = useContext(LoginContext);
+  const { isLoggedIn, setIsLoggedIn } = useContext(LoginContext);
 
   const [ bookDetails, setBookDetails ] = useState({});
+  const [ isErrorWishList, setIsErrorWishList ] = useState(false);
+  const [ isInWishlist, setIsInWishlist ] = useState(false);
 
   const onSuccess = (data) => {
     if (data) {
@@ -22,11 +31,32 @@ const BookPage = () => {
     }
   };
 
-  const { data: bookListData, isError, isLoading } = useQuery({
+  const onWishlistSuccess = async ({ data, status }) => {
+    if (status !== HTTP_OK) {
+      await getLogout(token);
+
+      localStorage.removeItem(JWT_TOKEN);
+      setIsLoggedIn(false);
+    }
+
+    if (data) {
+      const isBookInWishlist = checkBookInWishlist(data, bookId);
+
+      setIsInWishlist(isBookInWishlist);
+    }
+  };
+
+  const { isError, isLoading } = useQuery({
     queryKey: RQ_KEY.BOOKS_LIST_BY_COLLECTION,
     queryFn: () => getBook(bookId),
     onSuccess,
-    enabled: true,
+    ...RQ_DEFAULT_OPTIONS
+  });
+
+  useQuery({
+    queryKey: RQ_KEY.USER_WISHLIST,
+    queryFn: getUserWishlist,
+    onSuccess: onWishlistSuccess,
     ...RQ_DEFAULT_OPTIONS
   });
 
@@ -46,11 +76,20 @@ const BookPage = () => {
     description,
     date,
     image,
-    price,
     author,
     collection,
     genres
   } = bookDetails;
+
+  async function handleWishlist() {
+    try {
+      await postAddBookToWishlist(isbn);
+
+      setIsInWishlist(true);
+    } catch (error) {
+      setIsErrorWishList(true);
+    }
+  }
 
   return (
     <>
@@ -61,8 +100,16 @@ const BookPage = () => {
           <h3 className="book-page__left__title">{ title }</h3>
           <p className="book-page__left__description">{ description }</p>
 
-          { isLoggedIn &&
-            <Button className="book-page__left__button" label="Añadir a tu lista" type="primary" />
+          { isLoggedIn && !isInWishlist && (
+            <Button className={ isInWishlist ? 'book-page__left__wishlist-message' : 'book-page__left__button' }
+                label={ isInWishlist ? 'En mi lista' : 'Añadir a tu lista' }
+                type="primary"
+                disabled={ isInWishlist }
+                onClick={ handleWishlist } />
+          ) }
+
+          { isInWishlist &&
+            <div className="book-page__left__wishlist-message">En mi lista</div>
           }
 
           <ShareButtons />
@@ -77,27 +124,27 @@ const BookPage = () => {
               { collection?.name }
             </Link>
             {
-          genres?.map((genre) => (
-            <p key={ genre?.name }
-                className="book-page__right__content--genre">
-              { genre?.name }
-            </p>
-          ))
-          }
+              genres?.map((genre) => (
+                <p key={ genre?.name }
+                    className="book-page__right__content--genre">
+                  { genre?.name }
+                </p>
+              ))
+            }
             <div className="book-page__right__content--title">Año:</div>
             <span className="book-page__right__content--value">{ date }</span>
 
             <div className="book-page__right__content--title">ISBN:</div>
             <span className="book-page__right__content--value">{ isbn }</span>
-
-            <div className="book-page__right__content--title">Precio:</div>
-            <span className="book-page__right__content--value">{ `${ price } €` }</span>
           </div>
         </div>
       </div>
       ) }
       { isLoading && <Spinner /> }
-      { isError && <p>Ha habido un error</p> }
+      {
+        (isError || isErrorWishList) &&
+          <p style={{ color: 'red' }}>Ha habido un error</p>
+      }
     </>
   );
 };

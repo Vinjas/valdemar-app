@@ -4,10 +4,11 @@ import Button from '../../components/button/button';
 import { getLogout } from '../../services/auth';
 import './profile-page.scss';
 import { LoginContext } from '../../context/loginContext';
+import { JWT_TOKEN } from '../../services/constants';
 
 const ProfilePage = () => {
   const navigate = useNavigate();
-  const token = localStorage.getItem('token');
+  const token = localStorage.getItem(JWT_TOKEN);
 
   const { isLoggedIn, setIsLoggedIn } = useContext(LoginContext);
 
@@ -26,7 +27,7 @@ const ProfilePage = () => {
       document.body.style.backgroundColor = '#f6f6f6';
       document.documentElement.style.backgroundColor = '#f6f6f6';
     };
-  }, []);
+  }, [ isLoggedIn, navigate ]);
 
   async function handleLogOut() {
     try {
@@ -37,7 +38,7 @@ const ProfilePage = () => {
 
       setIsLoggedIn(false);
 
-      localStorage.removeItem('token');
+      localStorage.removeItem(JWT_TOKEN);
       navigate('/login');
     } catch (error) {
       setIsError(true);

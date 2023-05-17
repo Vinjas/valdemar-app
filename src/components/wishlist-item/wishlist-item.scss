@@ -1,0 +1,152 @@
+@import '../../sass/variables';
+@import '../../sass/mixims';
+
+.wishlist-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  transition: 0.5s;
+
+  @include mdMinBreakPoint {
+    flex-direction: row;
+  }
+
+  &__section {
+    display: flex;
+    justify-content: start;
+    width: 100%;
+    margin: 1rem 0;
+    align-items: center;
+
+    @include mdMinBreakPoint {
+      width: auto;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    padding: 0 1rem 0 2rem;
+
+    &--author {
+      font-family: "Mercury-display", sans-serif;
+      color: $color-grey;
+    }
+    
+    &--title {
+      font-family: 'Gotham Narrow Bold';
+      color: $color-gold;
+      margin-top: .5rem;
+    }
+
+    &--date {
+      font-family: "Mercury-display", sans-serif;
+    }
+
+    &--isbn {
+      font-family: "Mercury-display", sans-serif;
+      color: $color-grey;
+      margin-top: .5rem;
+    }
+  }
+
+  &__collection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 1rem 0 0;
+    width: 100%;
+
+    @include mdMinBreakPoint {
+      width: auto;
+      padding: 0 1rem;
+    }
+
+    &--collection {
+      font-family: 'Gotham Narrow Bold';
+      color: $color-red;
+      text-decoration: none;
+      cursor: pointer;
+      transition: 0.3s;
+
+      &:hover {
+        color: $color-black;
+      }
+    }
+
+    &--genres {
+      font-family: "Mercury-display", sans-serif;
+      text-align: center;
+      font-size: 14px;
+      margin-top: .5rem;
+      width: 100%;
+
+      @include mdMinBreakPoint {
+        width: auto;
+      }
+
+      &__single {
+        padding: .5rem;
+        margin: .5rem 0;
+        border: 2px solid $color-light-grey;
+
+        @include xlMinBreakPoint {
+          padding: 1rem 3rem;
+        }
+      }
+    }
+  }
+
+  &__img {
+    max-width: 100px;
+    transition: 0.5s;
+
+    &:hover {
+      -webkit-animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+      animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    }
+  }    
+
+  &__buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: space-between;
+    justify-content: space-between;
+    padding-left: 1rem;
+    width: 100%;
+    height: 100%;
+
+    @include mdMinBreakPoint {
+      width: auto;
+    }
+
+    & > button {
+      padding: .5rem 1.5rem;
+      margin: .5rem 0;
+
+      @include xlMinBreakPoint {
+        padding: 1rem 5rem;
+      }
+    }
+
+    & > a > button {
+      padding: .5rem 1.5rem;
+      margin: .5rem 0;
+      width: 100%;
+
+      @include mdMinBreakPoint {
+        width: auto;
+      }
+
+      @include xlMinBreakPoint {
+        padding: 1rem 5rem;
+      }
+    }
+
+    &--secondary {
+      width: 100%;
+      box-shadow: none;
+    }
+  }
+}

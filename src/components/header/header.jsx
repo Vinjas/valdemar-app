@@ -32,7 +32,7 @@ const Header = () => {
           <Link to="/wishlist">
             <Button className={ `header__list ${ isHomePage && 'header__list--white' }` } variant="contained">
               <Favorite fontSize="small" />
-              <p>Tu lista</p>
+              <p>Mi lista</p>
             </Button>
           </Link>
           { !isLoggedIn && (

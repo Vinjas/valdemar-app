@@ -1,9 +1,9 @@
 import { useContext, useEffect, useState } from 'react';
-import { Link, useNavigate, redirect } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Button from '../../components/button/button';
 import Input from '../../components/input/input';
 import { postLogin } from '../../services/auth';
-import { EMAIL_REGEX } from '../../services/constants';
+import { EMAIL_REGEX, HTTP_OK, JWT_TOKEN } from '../../services/constants';
 import './login-page.scss';
 import { LoginContext } from '../../context/loginContext';
 
@@ -60,7 +60,7 @@ const LoginPage = () => {
     try {
       const { data, status } = await postLogin(form);
 
-      if (status !== 200) {
+      if (status !== HTTP_OK) {
         setIsFormError(true);
         setErrorMessage('El usuario o password no es correcto');
 
@@ -69,7 +69,7 @@ const LoginPage = () => {
 
       setIsLoggedIn(true);
 
-      localStorage.setItem('token', data?.token);
+      localStorage.setItem(JWT_TOKEN, data?.token);
 
       navigate('/profile');
     } catch (error) {
@@ -116,7 +116,9 @@ const LoginPage = () => {
         <div className="login-page__title--secondary">¿Todavía no tienes cuenta?</div>
         <div className="login-page__description login-page__description--secondary">Regístrate para disfrutar de todas las ventajas de Valdemar y enterarte de todas las novedades.</div>
         <Link to="/register" className="login-page__register-button">
-          <Button label="Crea tu cuenta" disabled={ false } type="secondary" />
+          <Button label="Crea tu cuenta"
+              disabled={ false }
+              type="secondary" />
         </Link>
       </div>
       <div className="login-page__right" />
