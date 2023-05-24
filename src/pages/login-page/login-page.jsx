@@ -24,7 +24,7 @@ const LoginPage = () => {
       document.body.style.backgroundColor = '#f6f6f6';
       document.documentElement.style.backgroundColor = '#f6f6f6';
     };
-  }, []);
+  }, [ isLoggedIn, navigate ]);
 
   const [ form, setForm ] = useState({
     email: '',

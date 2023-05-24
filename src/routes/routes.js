@@ -16,9 +16,10 @@ import RegisterPage from '../pages/register-page/register-page';
 import ProfilePage from '../pages/profile-page/profile-page';
 import { LoginContext } from '../context/loginContext';
 import WishlistPage from '../pages/wishlist-page/wishlist-page';
+import SearchPage from '../pages/search-page/search-page';
 
 const Routes = () => {
-  const { isLoggedIn, setIsLoggedIn } = useContext(LoginContext);
+  const { isLoggedIn } = useContext(LoginContext);
 
   return (
     <BrowserRouter>
@@ -29,10 +30,11 @@ const Routes = () => {
         <Route path="/collections" element={ <CollectionsList /> } />
         <Route path="/collections/:collectionId" element={ <BookListByCollection /> } />
         <Route path="/book/:bookId" element={ <BookPage /> } />
-        <Route path="/login" element={ <LoginPage /> } />
-        <Route path="/register" element={ <RegisterPage /> } />
-        <Route path="/profile" element={ <ProfilePage /> } />
+        <Route path="/login" element={ isLoggedIn ? <ProfilePage /> : <LoginPage /> } />
+        <Route path="/register" element={ isLoggedIn ? <ProfilePage /> : <RegisterPage /> } />
+        <Route path="/profile" element={ isLoggedIn ? <ProfilePage /> : <LoginPage /> } />
         <Route path="/wishlist" element={ <WishlistPage /> } />
+        <Route path="/search/:searchInput" element={ <SearchPage /> } />
       </Switch>
       <Footer />
     </BrowserRouter>

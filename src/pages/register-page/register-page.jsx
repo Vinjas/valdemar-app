@@ -1,13 +1,16 @@
-import { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useContext, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Button from '../../components/button/button';
 import Input from '../../components/input/input';
-import { postRegister } from '../../services/auth';
-import { EMAIL_REGEX, PASSWORD_REGEX, USERNAME_CHARACTERS } from '../../services/constants';
+import { postLogin, postRegister } from '../../services/auth';
+import { EMAIL_REGEX, JWT_TOKEN, PASSWORD_REGEX, USERNAME_CHARACTERS } from '../../services/constants';
 import './register-page.scss';
+import { LoginContext } from '../../context/loginContext';
 
 const RegisterPage = () => {
   const navigate = useNavigate();
+
+  const { setIsLoggedIn } = useContext(LoginContext);
 
   useEffect(() => {
     document.body.style.backgroundColor = '#fff';
@@ -67,8 +70,13 @@ const RegisterPage = () => {
 
     try {
       await postRegister(form);
+      const { data } = await postLogin(form);
 
-      navigate('/');
+      setIsLoggedIn(true);
+
+      localStorage.setItem(JWT_TOKEN, data?.token);
+
+      navigate('/profile');
     } catch (error) {
       setIsFormError(true);
       setErrorMessage(error);

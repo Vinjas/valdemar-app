@@ -1,4 +1,5 @@
 import Logo from '../logo/logo';
+import ShareButtons from '../share-buttons/share-buttons';
 import './footer.scss';
 
 const Footer = () => (
@@ -9,6 +10,8 @@ const Footer = () => (
       <p className="footer__name">Carlos de Vega</p>
       <p className="footer__name">Daniel Vinyas</p>
     </div>
+
+    <ShareButtons isFooter />
 
     <Logo isWhite={ true } isSmall={ true } />
   </div>

@@ -160,7 +160,7 @@ module.exports = {
     'no-lonely-if': 'error',
     'no-loop-func': 'error',
     'no-loss-of-precision': 'error',
-    'no-magic-numbers': 'warn',
+    'no-magic-numbers': 'off',
     'no-misleading-character-class': 'error',
     'no-mixed-operators': 'error',
     'no-mixed-spaces-and-tabs': 'error',

@@ -9,13 +9,22 @@
     color: $color-grey;
     font-family: "Gotham Narrow Bold", sans-serif;
     text-transform: uppercase;
+
+    &--footer {
+      color: $color-white;
+      margin: 0 0 1rem;
+    }
   }
 
   &__list {
-      display: flex;
-  flex-direction: row;
-  gap: 2rem;
-  color: $color-gold;
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    color: $color-gold;
+
+    &--footer {
+      color: $color-grey;
+    }
   }
 
   &__icon {
